@@ -7,16 +7,16 @@ import com.utkarsh.deliveroo.parser.CronParser;
 public class Main {
     public static void main(String[] args) {
         if (args.length == 0) {
-            throw new RuntimeException("Insufficient argument length.");
+            throw new RuntimeException("Insufficient argument length for cron expression.");
         }
         CronParser parser = new CronParser();
         try {
             CronExpression expression = parser.parse(args[0]);
-            String formatted = expression.format();
-            System.out.println(formatted);
+            String formattedCronExpression = expression.format();
+            System.out.println(formattedCronExpression);
         }
         catch (InvalidCronExpressionFormatException e){
-            System.err.println("Error: " + e.getMessage());
+            System.err.println("InvalidCronExpressionFormatException: " + e.getMessage());
             System.exit(1);
         }
         catch (Exception e) {
